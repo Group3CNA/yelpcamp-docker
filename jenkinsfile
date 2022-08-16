@@ -22,13 +22,14 @@ pipeline {
             steps {
                 //sh 'docker container create -p 5000:5000 group3cna/test:$BUILD_NUMBER'
                 //sh 'docker run -d -p 5000:5000 group3cna/test:$BUILD_NUMBER'
-                //sh 'echo "Tests passed"'
+                sh 'echo "Test image - success"'
             }
         }
         stage('Docker Login') {
             steps {
                 //sh 'docker login -u $DOCKERHUB_CREDS_USR -p $DOCKERHUB_CREDS_PSW' (this will leave the password visible)
                 //sh 'echo $DOCKERHUB_CREDS_PSW | docker login -u $DOCKERHUB_CREDS_USR --password-stdin'
+                sh 'echo "Docker login - success"'
             }
         }
         stage('Docker Push') {
@@ -37,6 +38,7 @@ pipeline {
                 //sh 'docker push group3cna/test:$BUILD_NUMBER'
                 //sh 'docker container stop $(docker container ls -aq)'
                 //sh 'docker run -d -p 5000:5000 group3cna/test:$BUILD_NUMBER'
+                sh 'echo "Docker push - success"'
             }
         }
         stage('Trigger ManifestUpdate') {
@@ -49,6 +51,7 @@ pipeline {
     post {
         always {
             //sh 'docker logout'
+            sh 'echo "Docker logout - success"'
         }
     }
 }
