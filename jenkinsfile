@@ -34,8 +34,9 @@ pipeline {
         }
         stage('Docker Push') {
             steps {
-                //sh 'docker push group3cna/test' (this will use the tag latest)    
-                sh 'docker push yelpcamp_app'
+                sh 'docker tag yelpcamp_app group3cna/saas:$BUILD_NUMBER'
+                sh 'docker push group3cna/saas:$BUILD_NUMBER'
+                //sh 'docker push group3cna/test' (this will use the tag latest)
                 //sh 'docker container stop $(docker container ls -aq)'
                 //sh 'docker run -d -p 5000:5000 group3cna/test:$BUILD_NUMBER'
                 sh 'echo "Docker push - success"'
