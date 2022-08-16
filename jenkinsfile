@@ -15,6 +15,7 @@
             steps {
 		        //sh 'docker build -t group3cna/test:$BUILD_NUMBER ./'
             sh 'sudo docker compose up'
+	    sh 'echo "image build success"'
             }
         }
         stage('Test image') {
