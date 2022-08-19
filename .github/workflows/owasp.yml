@@ -1,5 +1,4 @@
-- name: OWASP ZAP Full Scan
-
+name: OWASP ZAP Full Scan
 on: [push]
 jobs:
   zap_scan:
