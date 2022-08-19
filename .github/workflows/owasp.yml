@@ -1,0 +1,15 @@
+- name: OWASP ZAP Full Scan
+  uses: zaproxy/action-full-scan@v0.4.0
+on: [push]
+jobs:
+  zap_scan:
+    runs-on: ubuntu-latest
+    name: Scan the web application
+    steps:
+      - name: ZAP Scan
+        uses: zaproxy/action-baseline@v0.6.1
+        with:
+          docker_name: 'owasp/zap2docker-stable'
+          target: 'http://18.208.148.219:3000/'
+          rules_file_name: '.zap/rules.tsv'
+          cmd_options: '-a'
